@@ -1482,16 +1482,23 @@ Insentif    : {}""".format(produk, locale.format("%d", terjual, 1), locale.forma
                     persen=row[2]
                     insentif=row[3]
                     total_insentif += insentif
-                    text=text+"""
+                    text_o=text+"""
 {}
 Terjual     : {}
 Pencapaian  : {}%
 Insentif    : {}""".format(produk, locale.format("%d", terjual, 1), locale.format("%d", persen, 1), locale.format("%d", insentif, 1))
                     result.append(text)
+                    text=text+"""
+{}
+Terjual     : {}
+Pencapaian  : {}%
+Insentif    : {}""".format(produk, self.ribuan(terjual, locale.format("%d", persen, 1), self.ribuan(insentif))
+                    result.append(text)
                     text=""
                 if len(result) > 0:
                     result.append('\n-------------------------')
-                    result.append("Total Insentif Produk : " + locale.format("%d", total_insentif, 1))
+                    #result.append("Total Insentif Produk : " + locale.format("%d", total_insentif, 1))
+                    result.append("Total Insentif Produk : " + self.ribuan(total_insentif))
             else:
                 result.append("Maaf {}. Rin belum mendaftarkan id FB kamu pada laporan insentif.".format(nama))
         else:
@@ -1744,9 +1751,13 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
                         for invoice in account_invoice.browse(invoice_ids):
                             count+=1
                             insentif=500*count
-                        text="""
+                        text_o="""
 Total Faktur    : {}
 Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d", insentif,1))
+                        print("get_insentif_faktur SUCCESS")
+                        text="""
+Total Faktur    : {}
+Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insentif))
                         print("get_insentif_faktur SUCCESS")
                     else:
                         text="Maaf, Rin tidak bisa menemukan list faktur kamu."
@@ -1859,7 +1870,7 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
                         tgl_max=body[3]
                         sales=body[4]
                         text=self.get_insentif_by_date(fb_id, nama, tgl_min, tgl_max, sales)
-                    else:
+                    if len(body)<5:
                         text=self.get_insentif(fb_id, nama)
                 if o=="faktur":
                     if len(body)==5 and nama=="Boss":
@@ -1867,14 +1878,14 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
                         tgl_max=body[3]
                         sales=body[4]
                         text=self.get_insentif_faktur_by_date(value, fb_id, nama, tgl_min, tgl_max, sales)
-                    else:
+                    if len(body)<5
                         text=self.get_insentif_faktur(value, fb_id, nama)
                 if o=="terigu" or o=="gula" or o=="pengirim":
                     if len(body)==4 and nama=="Boss":
                         tgl_min=body[2]
                         tgl_max=body[3]
                         text=self.get_insentif_pengirim_by_date(fb_id, nama, tgl_min, tgl_max, o)
-                    else:
+                    if len(body)<4
                         text=self.get_insentif_pengirim(fb_id, nama, o)
         if value=="out":
             if nama !='Boss':
