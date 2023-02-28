@@ -1276,6 +1276,7 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 7:1904000000, #1500000000,
                 9:2260000000, #1500000000,
                 44:1288000000, #1050000000,
+                6:1288000000,
                 56:1880800000}
         sales={
                 5:"Zulkarnaen",
@@ -1283,7 +1284,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 7:"Tedi Guntara",
                 9:"Agus Ahmad Rian",
                 44:"Agung Aprianto",
-                56:"Adi"}
+                56:"Adi",
+                6:"Edi""}
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 record=self.sql_query(sql_omzet_by_date_detail.format(tgl_min, tgl_max))
@@ -1457,6 +1459,8 @@ Insentif    : {}""".format(produk, locale.format("%d", terjual, 1), locale.forma
             user_id=44
         if sales=='adi':
             user_id=56
+        if sales=='edi':
+            user_id=6
         if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
             record=self.sql_query(sql_insentif_salesman_by_date.format(user_id, tgl_min, tgl_max))
             result=[]
@@ -1712,6 +1716,8 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
                     user_id=44
                 if sales=='adi':
                     user_id=56
+                if sales=='edi':
+                    user_id=6
                 # Prepare the connection to the server
                 odoo = odoorpc.ODOO('app.manzada.net', port=8069)
                 # Login
