@@ -1285,7 +1285,7 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 9:"Agus Ahmad Rian",
                 44:"Agung Aprianto",
                 56:"Adi",
-                6:"Edi""}
+                6:"Edi"}
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 record=self.sql_query(sql_omzet_by_date_detail.format(tgl_min, tgl_max))
@@ -1389,6 +1389,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
             user_id=44
         if sales=='adi':
             user_id=56
+        if sales=='edi':
+            user_id=6
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 result=[]
