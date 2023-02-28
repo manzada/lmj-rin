@@ -2082,7 +2082,7 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
         )
 
     # assume value is a decimal
-    def ribuan(value):
+    def ribuan(self, value):
         str_value = str(value)
         separate_decimal = str_value.split(".")
         after_decimal = separate_decimal[0]
