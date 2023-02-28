@@ -1878,14 +1878,14 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
                         tgl_max=body[3]
                         sales=body[4]
                         text=self.get_insentif_faktur_by_date(value, fb_id, nama, tgl_min, tgl_max, sales)
-                    if len(body)<5
+                    if len(body)<5:
                         text=self.get_insentif_faktur(value, fb_id, nama)
                 if o=="terigu" or o=="gula" or o=="pengirim":
                     if len(body)==4 and nama=="Boss":
                         tgl_min=body[2]
                         tgl_max=body[3]
                         text=self.get_insentif_pengirim_by_date(fb_id, nama, tgl_min, tgl_max, o)
-                    if len(body)<4
+                    if len(body)<4:
                         text=self.get_insentif_pengirim(fb_id, nama, o)
         if value=="out":
             if nama !='Boss':
