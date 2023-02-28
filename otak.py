@@ -1827,7 +1827,8 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
         if '_text' in response:
             body=response['_text'].split(' ')
         entities=response['entities']
-        object_type="object_type" in entities
+        #object_type="object_type" in entities
+        object_type=true
         user_id=self.get_manzada_user_id(fb_id)
         if value=="order":
             text=self.get_status_order(fb_id, nama)
@@ -1866,6 +1867,7 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
                 o=self.get_value(entities, "object_type")
                 if o=="produk":
                     if len(body)==5 and nama=="Boss":
+                        print("Insentif Produk By Date")
                         tgl_min=body[2]
                         tgl_max=body[3]
                         sales=body[4]
@@ -1874,6 +1876,7 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
                         text=self.get_insentif(fb_id, nama)
                 if o=="faktur":
                     if len(body)==5 and nama=="Boss":
+                        print("Insentif Faktur By Date")
                         tgl_min=body[2]
                         tgl_max=body[3]
                         sales=body[4]
