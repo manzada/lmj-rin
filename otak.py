@@ -10,7 +10,7 @@ import operator
 import socket
 from dateutil.relativedelta import relativedelta
 
-locale.setlocale(locale.LC_ALL, 'id_ID.UTF-8')
+locale.setlocale(locale.LC_ALL, '')
 IAM='3432901240109402'
 SERVER = "app.manzada.net"
 WEBPORT = 8069
@@ -1203,9 +1203,10 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                             persentase=row[2]
                         else:
                             persentase=0
-                        text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + locale.format("%d",total_omzet,1) + "\t" + str(persentase) + "%"
-                        #text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + f"{total_omzet:.}" + "\t" + str(persentase) + "%"
-                    text=text + '\n\nGrand Total : ' + locale.format("%d", grand_total, 1)
+                        #text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + locale.format("%d",total_omzet,1) + "\t" + str(persentase) + "%"
+                        text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + ribuan(total_omzet) + "\t" + str(persentase) + "%"
+                    #text=text + '\n\nGrand Total : ' + locale.format("%d", grand_total, 1)
+                    text=text + '\n\nGrand Total : ' + ribuan(grand_total)
                 else:
                     text="Maaf. Rin tidak bisa menemukan data omzet untuk saat ini."
             else:
@@ -1310,10 +1311,10 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                             persentase=row[2]
                         else:
                             persentase=0
-                        text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + locale.format("%d",total_omzet,1) + "\t" + str(persentase) + "%"
-                        #text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + f"{total_omzet:.}" + "\t" + str(persentase) + "%"
-                    text=text + '\n\nGrand Total : ' + locale.format("%d", grand_total, 1)
-                    #text=text + '\n\nGrand Total : ' + f"{grand_total:.}"
+                        #text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + locale.format("%d",total_omzet,1) + "\t" + str(persentase) + "%"
+                        text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + ribuan(total_omzet) + "\t" + str(persentase) + "%"
+                    #text=text + '\n\nGrand Total : ' + locale.format("%d", grand_total, 1)
+                    text=text + '\n\nGrand Total : ' + ribuan(grand_total)"
                 else:
                     text="Maaf. Rin tidak bisa menemukan data omzet untuk saat ini."
             else:
@@ -2079,3 +2080,23 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
             else
             "malam"
         )
+
+    # assume value is a decimal
+    def ribuan(value):
+        str_value = str(value)
+        separate_decimal = str_value.split(".")
+        after_decimal = separate_decimal[0]
+        before_decimal = separate_decimal[1]
+
+        reverse = after_decimal[::-1]
+        temp_reverse_value = ""
+
+        for index, val in enumerate(reverse):
+            if (index + 1) % 3 == 0 and index + 1 != len(reverse):
+                temp_reverse_value = temp_reverse_value + val + "."
+            else:
+                temp_reverse_value = temp_reverse_value + val
+
+        temp_result = temp_reverse_value[::-1]
+
+        return temp_result + "," + before_decimal
