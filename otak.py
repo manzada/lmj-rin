@@ -1810,15 +1810,17 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
             text=self.get_status_order(fb_id, nama)
         if value=="omzet":
             if len(body)==3 and (user_id==1 or nama=="Boss"):
+                print("Cek Omzet By Date")
                 tgl_min=body[1]
                 tgl_max=body[2]
                 text=self.get_omzet_by_date(fb_id, nama, tgl_min, tgl_max)
             if len(body)==4 and nama=="Boss":
+                print("Cek Omzet By Date Detail")
                 tgl_min=body[1]
                 tgl_max=body[2]
                 text=self.get_omzet_by_date_detail(fb_id, nama, tgl_min, tgl_max)
-            else:
-                print("HERE 1")
+            if len(body)==1:
+                print("Cek Omzet Normal")
                 text=self.get_omzet(fb_id, nama)
                 #if user_id==5 or nama=='Boss':
                 #    if object_type:
