@@ -1866,7 +1866,7 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
             if object_type:
                 o=self.get_value(entities, "object_type")
                 if o=="produk":
-                    if len(body)==5 and nama=="Boss":
+                    if len(body)==5:
                         print("Insentif Produk By Date")
                         tgl_min=body[1]
                         tgl_max=body[2]
@@ -1875,7 +1875,7 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
                     if len(body)<5:
                         text=self.get_insentif(fb_id, nama)
                 if o=="faktur":
-                    if len(body)==5 and nama=="Boss":
+                    if len(body)==5:
                         print("Insentif Faktur By Date")
                         tgl_min=body[1]
                         tgl_max=body[2]
@@ -1884,7 +1884,7 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
                     if len(body)<5:
                         text=self.get_insentif_faktur(value, fb_id, nama)
                 if o=="terigu" or o=="gula" or o=="pengirim":
-                    if len(body)==4 and nama=="Boss":
+                    if len(body)==4:
                         tgl_min=body[1]
                         tgl_max=body[2]
                         text=self.get_insentif_pengirim_by_date(fb_id, nama, tgl_min, tgl_max, o)
