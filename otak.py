@@ -1487,12 +1487,12 @@ Insentif    : {}""".format(produk, locale.format("%d", terjual, 1), locale.forma
 Terjual     : {}
 Pencapaian  : {}%
 Insentif    : {}""".format(produk, locale.format("%d", terjual, 1), locale.format("%d", persen, 1), locale.format("%d", insentif, 1))
-                    result.append(text)
+                    #result.append(text)
                     text=text+"""
 {}
 Terjual     : {}
 Pencapaian  : {}%
-Insentif    : {}""".format(produk, self.ribuan(terjual, locale.format("%d", persen, 1), self.ribuan(insentif))
+Insentif    : {}""".format(produk, self.ribuan(terjual), locale.format("%d", persen, 1), self.ribuan(insentif))
                     result.append(text)
                     text=""
                 if len(result) > 0:
@@ -1753,7 +1753,7 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
                             insentif=500*count
                         text_o="""
 Total Faktur    : {}
-Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d", insentif,1))
+Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insentif))
                         print("get_insentif_faktur SUCCESS")
                         text="""
 Total Faktur    : {}
