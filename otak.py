@@ -1314,7 +1314,7 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                         #text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + locale.format("%d",total_omzet,1) + "\t" + str(persentase) + "%"
                         text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + ribuan(total_omzet) + "\t" + str(persentase) + "%"
                     #text=text + '\n\nGrand Total : ' + locale.format("%d", grand_total, 1)
-                    text=text + '\n\nGrand Total : ' + ribuan(grand_total)"
+                    text=text + '\n\nGrand Total : ' + ribuan(grand_total)
                 else:
                     text="Maaf. Rin tidak bisa menemukan data omzet untuk saat ini."
             else:
