@@ -1827,8 +1827,8 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
         if '_text' in response:
             body=response['_text'].split(' ')
         entities=response['entities']
-        #object_type="object_type" in entities
-        object_type=true
+        object_type="object_type" in entities
+        #object_type=true
         user_id=self.get_manzada_user_id(fb_id)
         if value=="order":
             text=self.get_status_order(fb_id, nama)
