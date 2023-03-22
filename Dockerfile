@@ -15,3 +15,4 @@ ENV LANGUAGE en_US:en
 COPY . .
 
 CMD [ "python", "./app.py" ]
+EXPOSE 8080/tcp
