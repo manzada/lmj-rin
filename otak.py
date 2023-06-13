@@ -97,6 +97,7 @@ sql_omzet = "SELECT \
             WHEN x_user_id = 44 THEN 1288000000 \
             WHEN x_user_id = 6 THEN 1288000000 \
             WHEN x_user_id = 56 THEN 1880800000 \
+            WHEN x_user_id = 58 THEN 1288000000 \
             ELSE 800000000 END)*100),2) as x_pencapaian \
             FROM \
             (SELECT \
@@ -104,7 +105,7 @@ sql_omzet = "SELECT \
             SUM(amount_total) filter (WHERE  (state ='open' or state='paid') and type='out_invoice' and date_trunc('month', date_invoice) = date_trunc('month', current_date)) \
             AS x_total_omzet \
             FROM account_invoice \
-            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=6 or user_id=56 \
+            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=6 or user_id=56 or user_id=58 \
             GROUP BY x_user_id \
             )t \
             WINDOW window_bersih AS (PARTITION BY t.x_user_id) \
@@ -122,6 +123,7 @@ sql_omzet_by_date_detail = "SELECT \
             WHEN x_user_id = 44 THEN 1288000000 \
             WHEN x_user_id = 6 THEN 1288000000 \
             WHEN x_user_id = 56 THEN 1880800000 \
+            WHEN x_user_id = 58 THEN 1288000000 \
             ELSE 800000000 END)*100),2) as x_pencapaian \
             FROM \
             (SELECT \
@@ -129,7 +131,7 @@ sql_omzet_by_date_detail = "SELECT \
             SUM(amount_total) filter (WHERE  (state ='open' or state='paid') and type='out_invoice' and (date_invoice >= '{}' and date_invoice <= '{}')) \
             AS x_total_omzet \
             FROM account_invoice \
-            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=6 or user_id=56 \
+            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=6 or user_id=56 or user_id=58 \
             GROUP BY x_user_id \
             )t \
             WINDOW window_bersih AS (PARTITION BY t.x_user_id) \
@@ -1171,7 +1173,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 9:2260000000, #1500000000,
                 44:1288000000, #1050000000,
                 6:1288000000,
-                56:1880800000}
+                56:1880800000,
+                58:1288000000}
         sales={
                 5:"Zulkarnaen",
                 31:"Ahmad Syarifudin",
@@ -1179,7 +1182,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 9:"Agus Ahmad Rian",
                 44:"Agung Aprianto",
                 56:"Adi",
-                6:"Edi"}
+                6:"Edi",
+                58:"Bubun"}
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 record=self.sql_query(sql_omzet)
@@ -1229,6 +1233,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
             user_id=44
         if o=='adi':
             user_id=56
+        if o=='bubun':
+            user_id=58
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 record=self.sql_query(sql_omzet_harian.format(user_id))
@@ -1279,7 +1285,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 9:2260000000, #1500000000,
                 44:1288000000, #1050000000,
                 6:1288000000,
-                56:1880800000}
+                56:1880800000,
+                58:1288000000}
         sales={
                 5:"Zulkarnaen",
                 31:"Ahmad Syarifudin",
@@ -1287,7 +1294,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 9:"Agus Ahmad Rian",
                 44:"Agung Aprianto",
                 56:"Adi",
-                6:"Edi"}
+                6:"Edi",
+                58:"Bubun"}
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 record=self.sql_query(sql_omzet_by_date_detail.format(tgl_min, tgl_max))
@@ -1395,6 +1403,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
             user_id=56
         if sales=='edi':
             user_id=6
+        if sales=='bubun':
+            user_id=58
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 result=[]
@@ -1467,6 +1477,8 @@ Insentif    : {}""".format(produk, locale.format("%d", terjual, 1), locale.forma
             user_id=56
         if sales=='edi':
             user_id=6
+        if sales=='bubun':
+            user_id=58
         if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
             record=self.sql_query(sql_insentif_salesman_by_date.format(user_id, tgl_min, tgl_max))
             result=[]
@@ -1731,6 +1743,8 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
                     user_id=56
                 if sales=='edi':
                     user_id=6
+                if sales=='bubun':
+                    user_id=58
                 # Prepare the connection to the server
                 odoo = odoorpc.ODOO('app.manzada.net', port=8069)
                 # Login
@@ -2066,6 +2080,8 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
             user_id=56
         if fb_id=="25176516441947351":
             user_id=6
+        if fb_id=="6281740698579175":
+            user_id=58
         return user_id
 
     def is_int(self,s):
