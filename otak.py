@@ -90,14 +90,14 @@ sql_omzet = "SELECT \
             x_total_omzet, \
             round((coalesce(x_total_omzet,0)/\
             (CASE \
-            WHEN x_user_id  = 5 THEN 3427200000 \
+            WHEN x_user_id  = 5 THEN 3838464000 \
             WHEN x_user_id = 31 THEN 2632000000 \
-            WHEN x_user_id = 7 THEN 1904000000 \
-            WHEN x_user_id = 9 THEN 2260000000 \
-            WHEN x_user_id = 44 THEN 1288000000 \
+            WHEN x_user_id = 7 THEN 2132480000 \
+            WHEN x_user_id = 9 THEN 2531200000 \
+            WHEN x_user_id = 44 THEN 1442560000 \
             WHEN x_user_id = 6 THEN 1288000000 \
-            WHEN x_user_id = 56 THEN 1880800000 \
-            WHEN x_user_id = 58 THEN 1288000000 \
+            WHEN x_user_id = 56 THEN 2105600000 \
+            WHEN x_user_id = 58 THEN 2132480000 \
             ELSE 800000000 END)*100),2) as x_pencapaian \
             FROM \
             (SELECT \
@@ -105,7 +105,7 @@ sql_omzet = "SELECT \
             SUM(amount_total) filter (WHERE  (state ='open' or state='paid') and type='out_invoice' and date_trunc('month', date_invoice) = date_trunc('month', current_date)) \
             AS x_total_omzet \
             FROM account_invoice \
-            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=6 or user_id=56 or user_id=58 \
+            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=56 or user_id=58 \
             GROUP BY x_user_id \
             )t \
             WINDOW window_bersih AS (PARTITION BY t.x_user_id) \
@@ -116,14 +116,14 @@ sql_omzet_by_date_detail = "SELECT \
             x_total_omzet, \
             round((coalesce(x_total_omzet,0)/\
             (CASE \
-            WHEN x_user_id  = 5 THEN 3427200000 \
+            WHEN x_user_id  = 5 THEN 3838464000 \
             WHEN x_user_id = 31 THEN 2632000000 \
-            WHEN x_user_id = 7 THEN 1904000000 \
-            WHEN x_user_id = 9 THEN 2260000000 \
-            WHEN x_user_id = 44 THEN 1288000000 \
+            WHEN x_user_id = 7 THEN 2132480000 \
+            WHEN x_user_id = 9 THEN 2531200000 \
+            WHEN x_user_id = 44 THEN 1442560000 \
             WHEN x_user_id = 6 THEN 1288000000 \
-            WHEN x_user_id = 56 THEN 1880800000 \
-            WHEN x_user_id = 58 THEN 1288000000 \
+            WHEN x_user_id = 56 THEN 2105600000 \
+            WHEN x_user_id = 58 THEN 2132480000 \
             ELSE 800000000 END)*100),2) as x_pencapaian \
             FROM \
             (SELECT \
@@ -131,7 +131,7 @@ sql_omzet_by_date_detail = "SELECT \
             SUM(amount_total) filter (WHERE  (state ='open' or state='paid') and type='out_invoice' and (date_invoice >= '{}' and date_invoice <= '{}')) \
             AS x_total_omzet \
             FROM account_invoice \
-            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=6 or user_id=56 or user_id=58 \
+            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=56 or user_id=58 \
             GROUP BY x_user_id \
             )t \
             WINDOW window_bersih AS (PARTITION BY t.x_user_id) \
@@ -1167,14 +1167,14 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
         text=""
         user_id=self.get_manzada_user_id(fb_id)
         target_sales={
-                5:3427200000,
+                5:3838464000,
                 31:2632000000, #2050000000,
-                7:1904000000, #1500000000,
-                9:2260000000, #1500000000,
-                44:1288000000, #1050000000,
+                7:2132480000, #1500000000,
+                9:2531200000, #1500000000,
+                44:1442560000, #1050000000,
                 6:1288000000,
-                56:1880800000,
-                58:1288000000}
+                56:2105600000,
+                58:2132480000}
         sales={
                 5:"Zulkarnaen",
                 31:"Ahmad Syarifudin",
@@ -1279,14 +1279,14 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
         text=""
         user_id=self.get_manzada_user_id(fb_id)
         target_sales={
-                5:3427200000,
+                5:3838464000,
                 31:2632000000, #2050000000,
-                7:1904000000, #1500000000,
-                9:2260000000, #1500000000,
-                44:1288000000, #1050000000,
+                7:2132480000, #1500000000,
+                9:2531200000, #1500000000,
+                44:1442560000, #1050000000,
                 6:1288000000,
-                56:1880800000,
-                58:1288000000}
+                56:2105600000,
+                58:2132480000}
         sales={
                 5:"Zulkarnaen",
                 31:"Ahmad Syarifudin",
