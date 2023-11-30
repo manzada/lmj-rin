@@ -13,7 +13,7 @@ from dateutil.relativedelta import relativedelta
 locale.setlocale(locale.LC_ALL, '')
 IAM='3432901240109402'
 SERVER = "app.manzada.net"
-WEBPORT = 8069
+WEBPORT = 80
 TIMEOUT = 3
 RETRY = 1
 
@@ -402,7 +402,7 @@ ternyata kamu itu tipikal pembohong.
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 # Prepare the connection to the server
-                odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+                odoo = odoorpc.ODOO('app.manzada.net', port=80)
                 # Login
                 odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
                 if 'sale.order' in odoo.env:
@@ -447,7 +447,7 @@ Status : {}""".format(toko, locale.format("%d", amount_total, 1), status)
                 try:
                     if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                         # Prepare the connection to the server
-                        odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+                        odoo = odoorpc.ODOO('app.manzada.net', port=80)
                         # Login
                         odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
                         print("HERE 2")
@@ -751,7 +751,7 @@ Progress/Minimal : {}/{}""".format(product_name, locale.format("%d", qty_availab
         try:
             user_id=self.get_manzada_user_id(fb_id)
             # Prepare the connection to the server
-            odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+            odoo = odoorpc.ODOO('app.manzada.net', port=80)
             odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
             print("get_available HERE 2")
             print("get_available PROD IDS : "+str(product_ids))
@@ -789,7 +789,7 @@ Progress/Minimal : {}/{}""".format(product_name, locale.format("%d", qty_availab
         try:
             user_id=self.get_manzada_user_id(fb_id)
             # Prepare the connection to the server
-            odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+            odoo = odoorpc.ODOO('app.manzada.net', port=80)
             odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
             print("get_available HERE 2")
             print("get_available PROD IDS : "+str(product_ids))
@@ -852,7 +852,7 @@ Progress/Minimal : {}/{}""".format(product_name, locale.format("%d", qty_availab
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 # Prepare the connection to the server
-                odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+                odoo = odoorpc.ODOO('app.manzada.net', port=80)
                 odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
                 print("get_warning_stok HERE 2")
                 if 'product.product' in odoo.env:
@@ -899,7 +899,7 @@ Stok Perkiraan : {}
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 user_id=self.get_manzada_user_id(fb_id)
                 # Prepare the connection to the server
-                odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+                odoo = odoorpc.ODOO('app.manzada.net', port=80)
                 odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
                 print("get_available HERE 2")
                 print("get_available PROD IDS : "+str(product_ids))
@@ -955,7 +955,7 @@ Progress        : {}""".format(nama_produk, locale.format("%d", qty_available, 1
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 # Prepare the connection to the server
-                odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+                odoo = odoorpc.ODOO('app.manzada.net', port=80)
                 # Login
                 odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
                 print("get_draft HERE 2")
@@ -1000,7 +1000,7 @@ Total : {}""".format(toko, str(tgl), locale.format("%d", amount_total, 1)) + '\n
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 # Prepare the connection to the server
-                odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+                odoo = odoorpc.ODOO('app.manzada.net', port=80)
                 # Login
                 odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
                 print("get_open HERE 2")
@@ -1035,7 +1035,7 @@ Total   : {}""".format(toko, locale.format("%d", amount_total, 1)) + '\n'
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 # Prepare the connection to the server
-                odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+                odoo = odoorpc.ODOO('app.manzada.net', port=80)
                 # Login
                 odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
                 print("get_so HERE 2")
@@ -1690,7 +1690,7 @@ Insentif    : {}""".format(produk, self.ribuan(terjual), locale.format("%d", per
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 # Prepare the connection to the server
-                odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+                odoo = odoorpc.ODOO('app.manzada.net', port=80)
                 # Login
                 odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
                 print("get_insentif_faktur HERE 2")
@@ -1746,7 +1746,7 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
                 if sales=='bubun':
                     user_id=58
                 # Prepare the connection to the server
-                odoo = odoorpc.ODOO('app.manzada.net', port=8069)
+                odoo = odoorpc.ODOO('app.manzada.net', port=80)
                 # Login
                 odoo.login('manzada', 'rin@manzada.net', 'EnakBangetKalian')
                 print("get_insentif_faktur HERE 2")
