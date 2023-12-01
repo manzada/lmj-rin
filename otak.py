@@ -98,6 +98,7 @@ sql_omzet = "SELECT \
             WHEN x_user_id = 6 THEN 1288000000 \
             WHEN x_user_id = 56 THEN 2105600000 \
             WHEN x_user_id = 58 THEN 2132480000 \
+            WHEN x_user_id = 59 THEN 1442560000 \
             ELSE 800000000 END)*100),2) as x_pencapaian \
             FROM \
             (SELECT \
@@ -124,6 +125,7 @@ sql_omzet_by_date_detail = "SELECT \
             WHEN x_user_id = 6 THEN 1288000000 \
             WHEN x_user_id = 56 THEN 2105600000 \
             WHEN x_user_id = 58 THEN 2132480000 \
+            WHEN x_user_id = 59 THEN 1442560000 \
             ELSE 800000000 END)*100),2) as x_pencapaian \
             FROM \
             (SELECT \
@@ -1174,7 +1176,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 44:1442560000, #1050000000,
                 6:1288000000,
                 56:2105600000,
-                58:2132480000}
+                58:2132480000,
+                59:1442560000}
         sales={
                 5:"Zulkarnaen",
                 31:"Ahmad Syarifudin",
@@ -1183,7 +1186,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 44:"Agung Aprianto",
                 56:"Adi",
                 6:"Edi",
-                58:"Bubun"}
+                58:"Bubun",
+                59:"Fajar"}
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 record=self.sql_query(sql_omzet)
@@ -1235,6 +1239,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
             user_id=56
         if o=='bubun':
             user_id=58
+        if o=='fajar':
+            user_id=59     
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 record=self.sql_query(sql_omzet_harian.format(user_id))
@@ -1286,7 +1292,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 44:1442560000, #1050000000,
                 6:1288000000,
                 56:2105600000,
-                58:2132480000}
+                58:2132480000,
+                59:1442560000}
         sales={
                 5:"Zulkarnaen",
                 31:"Ahmad Syarifudin",
@@ -1295,7 +1302,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                 44:"Agung Aprianto",
                 56:"Adi",
                 6:"Edi",
-                58:"Bubun"}
+                58:"Bubun",
+                59:"Fajar"}
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 record=self.sql_query(sql_omzet_by_date_detail.format(tgl_min, tgl_max))
@@ -1405,6 +1413,8 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
             user_id=6
         if sales=='bubun':
             user_id=58
+        if sales=='fajar':
+            user_id=59
         try:
             if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
                 result=[]
@@ -1479,6 +1489,8 @@ Insentif    : {}""".format(produk, locale.format("%d", terjual, 1), locale.forma
             user_id=6
         if sales=='bubun':
             user_id=58
+        if sales=='fajar':
+            user_id=59
         if self.check_server(SERVER, WEBPORT, TIMEOUT, RETRY):
             record=self.sql_query(sql_insentif_salesman_by_date.format(user_id, tgl_min, tgl_max))
             result=[]
@@ -1745,6 +1757,8 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), locale.format("%d"
                     user_id=6
                 if sales=='bubun':
                     user_id=58
+                if sales=='fajar':
+                    user_id=59
                 # Prepare the connection to the server
                 odoo = odoorpc.ODOO('app.manzada.net', port=80)
                 # Login
@@ -2082,6 +2096,8 @@ Total Insentif  : {}""".format(locale.format("%d", count, 1), self.ribuan(insent
             user_id=6
         if fb_id=="6281740698579175":
             user_id=58
+        if fb_id=="6821994781252784":
+            user_id=59
         return user_id
 
     def is_int(self,s):
