@@ -106,7 +106,7 @@ sql_omzet = "SELECT \
             SUM(amount_total) filter (WHERE  (state ='open' or state='paid') and type='out_invoice' and date_trunc('month', date_invoice) = date_trunc('month', current_date)) \
             AS x_total_omzet \
             FROM account_invoice \
-            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=56 or user_id=58 \
+            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=56 or user_id=58 or user_id=59 \
             GROUP BY x_user_id \
             )t \
             WINDOW window_bersih AS (PARTITION BY t.x_user_id) \
@@ -133,7 +133,7 @@ sql_omzet_by_date_detail = "SELECT \
             SUM(amount_total) filter (WHERE  (state ='open' or state='paid') and type='out_invoice' and (date_invoice >= '{}' and date_invoice <= '{}')) \
             AS x_total_omzet \
             FROM account_invoice \
-            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=56 or user_id=58 \
+            WHERE user_id=5 or user_id=7 or user_id=9 or user_id=31 or user_id=44 or user_id=56 or user_id=58 or user_id=59 \
             GROUP BY x_user_id \
             )t \
             WINDOW window_bersih AS (PARTITION BY t.x_user_id) \
