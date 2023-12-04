@@ -1213,6 +1213,7 @@ Harap diketahui, satu huruf atau spasi pun juga berpengaruh""".format(toko)
                             persentase=0
                         #text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + locale.format("%d",total_omzet,1) + "\t" + str(persentase) + "%"
                         text = text + "\n\n" + sales[user_id] + " " + crown + "\n" + self.ribuan(total_omzet) + "\t" + str(persentase) + "%"
+                        print(text)
                     #text=text + '\n\nGrand Total : ' + locale.format("%d", grand_total, 1)
                     text=text + '\n\nGrand Total : ' + self.ribuan(grand_total)
                 else:
