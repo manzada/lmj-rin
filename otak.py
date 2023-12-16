@@ -16,7 +16,7 @@ SERVER = "app.manzada.net"
 WEBPORT = 80
 TIMEOUT = 3
 RETRY = 1
-
+#up
 #|| '%' AS x_pencapaian \
 param_sql =""
 sql_insentif_salesman = "SELECT \
