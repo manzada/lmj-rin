@@ -17,5 +17,4 @@ bottle==0.12.18
 psycopg2-binary==2.8.6
 OdooRPC==0.7.0
 python-dateutil
-twilio
 paramiko
