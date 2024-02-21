@@ -6,7 +6,7 @@ from threading import Thread
 from wit import Wit
 from pymessenger import Bot
 from pymessenger.user_profile import UserProfileApi
-from twilio.rest import Client
+#from twilio.rest import Client
 from otak import Otak
 from datetime import date
 import time
